@@ -1,0 +1,67 @@
+{%extends "base.html"%}
+
+{% load static %}
+
+{% block content%}
+<div class="container container text-center cont justify-content-center">
+    <div class="row cont-row justify-content-center">
+        <div class="col-md-3">
+            <a href="{% url 'doe_computer'%}">
+                           <div>
+                <img class="my-card img-fluid  mx-auto" src="{% static 'images/My-Computer.png'%}" alt="">
+            </div>
+            <br>
+            <h5> أجهزة الحاسوب </h5>
+
+            </a>
+
+        </div>
+
+        <div class="col-md-3">
+            <div>
+                <img class="my-card img-fluid  mx-auto" src="{% static 'images/network-connector.png'%}" alt="">
+            </div>
+            <br>
+            <h5> الشبكات والانترنت </h5>
+        </div>
+
+        <div class="col-md-3">
+            <div>
+                <img class="my-card img-fluid  mx-auto" src="{% static 'images/phone.png'%}" alt="">
+            </div>
+            <br>
+            <h5> شبكة الهاتف </h5>
+        </div>
+    </div>
+
+        <div class="row cont-row justify-content-center">
+        <div class="col-md-3">
+            <div>
+                <img class="my-card img-fluid  mx-auto" src="{% static 'images/printer.png'%}" alt="">
+            </div>
+            <br>
+            <h5> الطابعات </h5>
+        </div>
+
+        <div class="col-md-3">
+            <a href="{% url 'doe_copier'%}">
+                <div>
+                    <img class="my-card img-fluid  mx-auto" src="{% static 'images/copyer.png'%}" alt="">
+                </div>
+            <br>
+            <h5> ماكينات التصوير </h5>
+            </a>
+
+        </div>
+
+        <div class="col-md-3">
+            <div>
+                <img class="my-card img-fluid  mx-auto" src="{% static 'images/lcd.png'%}" alt="">
+            </div>
+            <br>
+            <h5> أجهزة العرض </h5>
+        </div>
+    </div>
+
+</div>
+{% endblock content%}

@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% load static%}
+
+{% block content%}
+<br>
+<div class="container">
+    <table class="table table-striped">
+        <thead class="border-bottom  font-weight-bold">
+        <tr>
+            <td> Copier Name</td>
+            <td> Copier IP</td>
+            <td> Location</td>
+            <td> Company</td>
+            <td> Contact</td>
+            <td> Driver</td>
+            <td>
+                <a href="{%url 'doe_copier_form'%}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add New
+                </a>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+            {% for copier in doe_copier%}
+                <tr>
+                    <td> {{copier.brand_name}}</td>
+                    <td> {{copier.copier_ip}}</td>
+                    <td> {{copier.copier_place}}</td>
+                    <td> {{copier.copier_company}}</td>
+                   <td> {{copier.copier_company_phone}}</td>
+                    <td> {{copier.copier_driver}}</td>
+                    <td>
+                        <a href="{%url 'doe_copier_form_update' copier.id%}" class="btn text-secondary px-0">
+                            <i class="far fa-edit fa-lg"></i>
+                        </a>
+                        <form action="{% url 'doe_copier_delete' copier.id%}" class="d-inline">
+                           <button type="submit" class="btn">
+                                <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                            </button>
+                        </form>
+                    </td>
+
+                </tr>
+            {%endfor%}
+        </tbody>
+
+
+
+    </table>
+</div>
+{% endblock content%}

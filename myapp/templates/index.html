@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block content%}
+
+<div class="container text-center cont justify-content-center">
+    <div class="row cont-row justify-content-center" style="padding: 20px 15% ">
+        <div class="col-md-5">
+            <a href="{% url 'doe'%}">
+                <div>
+                    <img class="main-card img-fluid mx-auto img-thumbnail" src="{%static 'images/office.png'%}" alt="">
+                </div>
+                <br>
+                <h4> مديرية التربية </h4>
+            </a>
+        </div>
+
+        <div class="col-md-5">
+            <a href="{% url 'school'%}">
+                <div>
+                    <img class="main-card img-fluid mx-auto img-thumbnail" src="{%static 'images/school.png'%}" alt="">
+                </div>
+                <br>
+                <h4> المدارس </h4>
+            </a>
+        </div>
+    </div>
+</div>
+{%endblock content%}

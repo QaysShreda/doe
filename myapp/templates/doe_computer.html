@@ -1,0 +1,56 @@
+{%extends "base.html"%}
+
+
+{% load static %}
+
+{% block content%}
+
+<br>
+<div class="container">
+   <table class="table  table-striped">
+    <thead class="border-bottom  font-weight-bold">
+        <tr style = "background:white;">
+            <td>Employee Name</td>
+            <td>Brand</td>
+            <td>CPU</td>
+            <td>Ram</td>
+            <td>HD</td>
+            <td>IP</td>
+            <td>Monitor</td>
+            <td>
+                <a href="{%url 'computer_form'%}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add New
+                </a>
+            </td>
+        </tr>
+    </thead>
+        <tbody>
+            {% for computer in doe_computer%}
+                <tr>
+                    <td>{{computer.employee_name}}</td>
+                    <td>{{computer.barnd_name}}</td>
+                    <td>{{computer.cpu}}</td>
+                    <td>{{computer.ram}}</td>
+                    <td>{{computer.hdd}}</td>
+                    <td>{{computer.ip}}</td>
+                    <td>{{computer.monitor}}</td>
+                    <td>
+                        <a href="{% url 'computer_update' computer.id %}" class="btn text-secondary px-0">
+                            <i class="far fa-edit fa-lg"></i>
+                        </a>
+                        <form action="{% url 'computer_delete' computer.id %}" class="d-inline">
+                            {%csrf_token%}
+                            <button type="submit" class="btn">
+                                <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                            </button>
+
+                        </form>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+</table>
+
+</div>
+
+{%endblock content%}
