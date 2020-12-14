@@ -35,13 +35,16 @@
     </div>
 
         <div class="row cont-row justify-content-center">
-        <div class="col-md-3">
-            <div>
-                <img class="my-card img-fluid  mx-auto" src="{% static 'images/printer.png'%}" alt="">
+            <div class="col-md-3">
+                <a href="{% url 'doe_printer'%}">
+                    <div>
+                        <img class="my-card img-fluid  mx-auto" src="{% static 'images/printer.png'%}" alt="">
+                    </div>
+                    <br>
+                    <h5> الطابعات </h5>
+                </a>
+
             </div>
-            <br>
-            <h5> الطابعات </h5>
-        </div>
 
         <div class="col-md-3">
             <a href="{% url 'doe_copier'%}">

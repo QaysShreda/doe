@@ -1,5 +1,44 @@
 {% extends 'base.html'%}
 
 {% block content%}
+<div class="container">
+    <table class="table table-borderless">
+        <thead class="border-bottom fornt-weight-bold">
+            <tr>
+                <td> Model Name</td>
+                <td> Employee Name</td>
+                <td> Cartridge</td>
+                <td> Driver</td>
+                <td>
+                    <a href="{% url 'doe_printer_form'%}" class="btn btn-outline-success">
+                    <i class="fas fa-plus">Add New</i>
+                        </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for printer in doe_printer%}
+            <tr>
+                <td> {{ printer.model_name}}</td>
+                <td> {{ printer.employee_name}}</td>
+                <td> {{ printer.Cartridge_number}}</td>
+                <td> {{ printer.driver}}</td>
+
+                <td>
+                    <a href="{% url 'doe_printer_update' printer.id%}" class="btn text-secondary d-inline">
+                    <i class="far fa-edit fa-larg"></i>   </a>
+
+                    <form action="{% url 'doe_printer_delete' printer.id%}" class="d-inline">
+                        <button type="submit" class="btn d-inline">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                            </button>
+                    </form>
+
+                </td>
+            </tr>
+        {% endfor%}
+        </tbody>
+    </table>
+</div>
 
 {% endblock content%}

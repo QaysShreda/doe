@@ -89,7 +89,6 @@ def doe_printer_form(request,id=0):
     else:
         if id == 0:
             form = PrinterForm(request.POST)
-    
         else:
             printer = Doe_printer.objects.get(pk=1)
             form = PrinterForm(request.POST,'doe_printer_form',instance=printer)
