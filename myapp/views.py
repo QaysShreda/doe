@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpRequest
-from .forms import ComputerForm,CopierForm,PrinterForm
-from .models import Doe_computer,Doe_copier,Doe_printer
+from .forms import ComputerForm,CopierForm,PrinterForm,ProjectorForm
+from .models import Doe_computer,Doe_copier,Doe_printer,Doe_projector
 # Create your views here.
 
 def index(request):
@@ -100,3 +100,36 @@ def doe_printer_delete(request,id):
     printer = Doe_printer.objects.get(pk=id)
     printer.delete()
     return redirect('/doe_printer')
+
+
+#DOE PROJECTOR
+def doe_projector(request):
+    context = {'doe_projector':Doe_projector.objects.all}
+    return render(request,'doe_projector.html',context)
+
+def doe_projector_form(request,id=0):
+    if request.method == 'GET':
+        if id ==0 :
+            form = ProjectorForm()
+        else:
+            projector = Doe_projector.objects.get(pk=id)
+            form = ProjectorForm(instance=projector)
+        return render(request, 'doe_projector_form.html', {'form': form})
+    else:
+        if id == 0:
+            form = ProjectorForm(request.POST)
+        else:
+            projector = Doe_projector.objects.get(pk=id)
+            form = ProjectorForm(request.POST,'doe_projector_form',instance=projector)
+
+        if form.is_valid():
+            form.save()
+        return redirect('doe_projector')
+    
+def doe_projector_delete(request,id):
+    projector = Doe_projector.objects.get(pk=id)
+    projector.delete()
+    return redirect('/doe_projector')
+    
+
+

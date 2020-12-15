@@ -23,7 +23,13 @@ urlpatterns =[
     path('doe_printer/', views.doe_printer,name="doe_printer"),
     path('doe_printer_form/', views.doe_printer_form,name="doe_printer_form"),
     path('<int:id>/doe_printer_form/', views.doe_printer_form,name="doe_printer_update"),
-    path('<int:id>/doe_printer_delete/',views.doe_printer_delete, name="doe_printer_delete")
+    path('<int:id>/doe_printer_delete/',views.doe_printer_delete, name="doe_printer_delete"),
+
+    # DOE PROJECTOR
+    path('doe_projector/', views.doe_projector, name="doe_projector"),
+    path('doe_projector_form/', views.doe_projector_form, name="doe_projector_form"),
+    path('<int:id>/doe_projector_form/', views.doe_projector_form, name="doe_projector_update"),
+    path('<int:id>/doe_projector_delete/', views.doe_projector_delete, name="doe_projector_delete")
 
 
 

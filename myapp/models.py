@@ -24,6 +24,11 @@ class Doe_printer(models.Model):
     Cartridge_number = models.CharField(max_length=50)
     driver = models.CharField(max_length=100)
 
+class Doe_projector(models.Model):
+    model_name = models.CharField(max_length=50)
+    ip = models.CharField(max_length=50)
+    location = models.CharField(max_length=50)
+    warranty = models.CharField(max_length=50)
 
 
 

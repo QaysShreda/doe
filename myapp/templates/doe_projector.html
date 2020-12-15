@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<br>
+<div class="container">
+   <table class="table  table-striped">
+    <thead class="border-bottom  font-weight-bold">
+                <tr>
+                    <td> Model Name</td>
+                    <td> IP </td>
+                    <td> Location </td>
+                    <td> Warranty</td>
+                    <td>
+                        <a href="{% url 'doe_projector_form'%}" class="btn btn-outline-success">
+                            <i class="fas fa-plus">Add New</i>
+                        </a>
+                    </td>
+                </tr>
+         </thead>
+
+         <tbody>
+         {% for projector in doe_projector%}
+         <tr>
+             <td>{{projector.model_name}}</td>
+             <td>{{projector.ip}}</td>
+             <td>{{projector.location}}</td>
+             <td>{{projector.warranty}}</td>
+             <td>
+                 <a href="{%url 'doe_projector_update' projector.id%}" class="btn font-secondary btn-lg btn-bolck">
+                     <i class="far fa-edit fa-larg"></i>
+                 </a>
+                 <form action="{%url 'doe_projector_delete'  projector.id%}" class="d-inline">
+                     <button type="submit" class="btn d-inline">
+                       <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                     </button>
+                 </form>
+             </td>
+         </tr>
+         {%endfor%}
+         </tbody>
+
+
+     </table>
+ </div>
+{% endblock content%}

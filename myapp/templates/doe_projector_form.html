@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{%load crispy_forms_tags%}
+{%load static%}
+{% block content%}
+
+<div class="container p-3 my-3 border bg-light">
+    <br>
+    <form action="" method="post">
+        {%csrf_token%}
+        <div class="row justify-content-center">
+        <div class="col-md-6">
+            {{form | crispy}}
+        </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success btn-lg btn-block">
+                    Submit
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a href="{% url 'doe_projector'%}" class="btn btn-secondary btn-lg btn-block">
+                   <i class="fas fa-stream"></i> Back
+                </a>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock content%}

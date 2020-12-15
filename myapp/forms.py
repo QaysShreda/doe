@@ -1,5 +1,5 @@
 from django import forms
-from .models import Doe_computer,Doe_copier,Doe_printer
+from .models import Doe_computer,Doe_copier,Doe_printer,Doe_projector
 
 class ComputerForm(forms.ModelForm):
     class Meta:
@@ -17,4 +17,9 @@ class CopierForm(forms.ModelForm):
 class PrinterForm(forms.ModelForm):
     class Meta:
         model = Doe_printer
+        fields = '__all__'
+
+class ProjectorForm(forms.ModelForm):
+    class Meta:
+        model = Doe_projector
         fields = '__all__'
