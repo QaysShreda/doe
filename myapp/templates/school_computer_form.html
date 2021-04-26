@@ -1,0 +1,99 @@
+{%extends 'base.html' %}
+{% load crispy_forms_tags%}
+
+{% block content%}
+<div class="container p-3 my-3 border bg-light">
+    <script>
+
+     function sayHello() {
+   document.forms['form'].elements['school'].disabled = false;
+   document.forms['form'].elements['lab'].disabled = false;
+            }
+
+    </script>
+
+
+    <form id='form' action="" method="post">
+        {% csrf_token%}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.school | as_crispy_field}}
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.lab | as_crispy_field}}
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.brand | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.cpu | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.ram | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.hdd | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.internet | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.os | as_crispy_field}}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.serial | as_crispy_field}}
+            </div>
+        </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <button id=btn" type="submit"  onclick="sayHello()" class="btn btn-success btn-lg btn-block">
+            Submit
+        </button>
+    </div>
+    <div class="col-md-2">
+        <a href="{% url 'school_lab'%}" class="btn btn-secondary btn-lg btn-block">
+            <i class="fas fa-stream"></i> Back
+        </a>
+    </div>
+
+</div>
+
+</form>
+
+<script>
+
+   document.addEventListener("DOMContentLoaded", function(e) {
+   document.forms['form'].elements['lab'].value = {{lab.id}};
+   document.forms['form'].elements['school'].value = {{lab.school.school_id}};
+   document.forms['form'].elements['school'].disabled = true;
+   document.forms['form'].elements['lab'].disabled = true;
+  });
+</script>
+{%endblock content %}

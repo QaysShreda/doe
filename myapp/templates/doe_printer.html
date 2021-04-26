@@ -3,8 +3,14 @@
 {% block content%}
 <br>
 <div class="container">
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <h4> الطابعات والفاكسات </h4>
+        </div>
+    </div>
+    <br>
    <table class="table  table-striped">
-    <thead class="border-bottom  font-weight-bold">
+    <thead class="border-bottom  font-weight-bold text-center">
             <tr>
                 <td> Model Name</td>
                 <td> Employee Name</td>
@@ -12,12 +18,12 @@
                 <td> Driver</td>
                 <td>
                     <a href="{% url 'doe_printer_form'%}" class="btn btn-outline-success">
-                    <i class="fas fa-plus">Add New</i>
+                    <i class="fas fa-plus">Add New Printer</i>
                         </a>
                 </td>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
         {% for printer in doe_printer%}
             <tr>
                 <td> {{ printer.model_name}}</td>

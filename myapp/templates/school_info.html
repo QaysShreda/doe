@@ -1,0 +1,74 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block content %}
+<div class="container-fluid p-3 border my-3 text-center justify-content-center bg-light" style="min-height:400px">
+    <div class="row justify-content-center mt-3">
+        <h3>  مدارس مديرية التربية والتعليم</h3>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+            <div class="col-md-10">
+        <table class="table table-striped">
+          <thead class="border-bottom font-weight-bold">
+          <tr>
+              <td>#</td>
+              <td>School Id</td>
+              <td>Name_ar</td>
+              <td>Name_en</td>
+              <td>Lower Level</td>
+              <td>Upper Level</td>
+              <td>Type </td>
+              <td>St Number</td>
+              <td>Phone</td>
+               <td>Location</td>
+              <td>Principal</td>
+              <td>mobile</td>
+              <td>Region</td>
+
+              <td>
+                  <a href="{%url 'school_form'%}" class="btn btn-outline-success">
+                      <i class="fas fa-plus">Add new School</i>
+                  </a>
+              </td>
+          </tr>
+          </thead>
+         <tbody>
+         {% for sch in school%}
+            <tr>
+                <td> {{ forloop.counter }} </td>
+                <td>{{sch.school_id}}</td>
+                <td>{{sch.name}}</td>
+                 <td>{{sch.name_en}}</td>
+                <td>{{sch.l_level}}</td>
+                <td>{{sch.u_level}}</td>
+                <td>{{sch.type}}</td>
+                <td>{{sch.st_number}}</td>
+                <td>{{sch.phone_number}}</td>
+                <td>{{sch.location}}</td>
+                <td>{{sch.principal}}</td>
+                <td>{{sch.mobile}}</td>
+                <td>{{sch.region}}</td>
+
+                <td>
+                        <a href="{% url 'school_update' sch.school_id%}" class="btn text-secondary px-0">
+                            <i class="far fa-edit fa-lg"></i>
+                        </a>
+                        <form action="{%url 'school_delete' sch.school_id%}" class="d-inline">
+                            {%csrf_token%}
+                            <button type="submit" class="btn">
+                                <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+         {%endfor%}
+         </tbody>
+
+     </table>
+    </div>
+    </div>
+
+
+</div>
+{% endblock content %}

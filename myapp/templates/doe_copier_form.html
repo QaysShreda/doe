@@ -4,37 +4,12 @@
 
 {% block content%}
 <div class="container p-3 my-3 border bg-light justify-content-center">
-            <form action="" method="post">
+          <div class="row justify-content-center">
+
+              <div class="col-md-6">
+                              <form action="" method="post">
                 {% csrf_token%}
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        {{form.brand_name | as_crispy_field}}
-                    </div>
-                </div>
-
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                        {{form.copier_ip | as_crispy_field}}
-                    </div>
-                    <div class="col-md-4">
-                        {{form.copier_place| as_crispy_field}}
-                    </div>
-                </div>
-
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                        {{form.copier_company | as_crispy_field}}
-                    </div>
-                    <div class="col-md-4">
-                        {{form.copier_company_phone | as_crispy_field}}
-                    </div>
-                </div>
-
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        {{form.copier_driver | as_crispy_field}}
-                    </div>
-                </div>
+                     {{form | crispy }}
 
                 <div class="row justify-content-center">
                     <div class="col-md-4">
@@ -51,6 +26,10 @@
 
                 </div>
             </form>
+
+              </div>
+          </div>
+
 </div>
 
 
