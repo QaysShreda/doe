@@ -6,34 +6,56 @@
 {% block content%}
 
 <br>
-<div class="container">
-   <table class="table  table-striped">
-    <thead class="border-bottom  font-weight-bold">
-        <tr style = "background:white;">
-            <td>Employee Name</td>
-            <td>Brand</td>
-            <td>CPU</td>
-            <td>Ram</td>
-            <td>HD</td>
-            <td>IP</td>
-            <td>Monitor</td>
-            <td>
-                <a href="{%url 'computer_form'%}" class="btn btn-outline-success">
-                    <i class="fas fa-plus"></i> Add New
-                </a>
-            </td>
-        </tr>
-    </thead>
-        <tbody>
-            {% for computer in doe_computer%}
-                <tr>
+
+    <div class="row justify-content-center">
+        <div class="col text-center pt-2 pb-2">
+            <h4> أجهزة الحاسوب - مديرية التربية والتعليم</h4>
+        </div>
+    </div>
+<br>
+<div class="container-fluid b-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <table class="table  table-striped">
+                <thead class="border-bottom  font-weight-bold">
+                <tr class="text-center" style="background:white;">
+                    <td>#</td>
+                    <td>Emp Name</td>
+                    <td>Department</td>
+                    <td>Model</td>
+                    <td>CPU</td>
+                    <td>Ram</td>
+                    <td>HD</td>
+                    <td>IP</td>
+                    <td>Monitor</td>
+                    <td>Serial</td>
+                    <td>Anti-Virus</td>
+                    <td>Expiry Date</td>
+                    <td>
+                        <a href="{%url 'computer_form'%}" class="btn btn-outline-success">
+                            <i class="fas fa-plus"></i> Add New Computer
+                        </a>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for computer in doe_computer%}
+
+                <tr class="text-center">
+                    <td>{{ forloop.counter }}</td>
                     <td>{{computer.employee_name}}</td>
+                    <td>{{computer.department}}</td>
                     <td>{{computer.brand_name}}</td>
                     <td>{{computer.cpu}}</td>
-                    <td>{{computer.ram}}</td>
-                    <td>{{computer.hdd}}</td>
+                    <td>{{computer.ram}} &nbsp; {{computer.ram_type}}</td>
+                    <td>{{computer.hdd}} 	&nbsp; {{computer.hdd_type}}</td>
                     <td>{{computer.ip}}</td>
                     <td>{{computer.monitor}}</td>
+                    <td>{{computer.serial}}</td>
+                    <td>{{computer.anti_viruse}}</td>
+                    <td>{{computer.expiry_date}}</td>
+
                     <td>
                         <a href="{% url 'computer_update' computer.id %}" class="btn text-secondary px-0">
                             <i class="far fa-edit fa-lg"></i>
@@ -47,9 +69,15 @@
                         </form>
                     </td>
                 </tr>
-            {%endfor%}
-        </tbody>
-</table>
+
+                {%endfor%}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
 
 </div>
 

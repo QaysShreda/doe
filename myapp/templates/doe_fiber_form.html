@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags%}
+{% block content%}
+
+<div class="container p-3 my-3 border bg-light justify-content-center">
+    <form action="" method="POST">
+        {%csrf_token%}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div>
+                    {{form | crispy}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <button class="btn btn-success btn-lg btn-block d-inline">
+                    Submit
+                </button>
+            </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'doe_network'%}" class="btn btn-secondary btn-lg btn-block">
+                           <i class="fas fa-stream"></i> Back
+                        </a>
+                    </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

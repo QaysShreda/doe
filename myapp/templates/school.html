@@ -1,75 +1,87 @@
 {%extends "base.html"%}
 
-
 {% load static %}
 
 {% block content%}
-<div class="container text-center cont justify-content-center ">
+<div class="container text-center justify-content-center ">
+            <div class="col-md-12 border mt-2 mb-2">
+            <h3 class="text-right">المدرسة </h3>
+        </div>
+    <div class="section border">
+        <div class="row cont-row justify-content-center ">
+            <div class="col-md-3">
+                <a href="{% url 'school_info'%}">
+                    <div>
+                        <img class="my-card  img-fluid  mx-auto mt-4" src="{% static 'images/info.png'%}" alt="">
+                    </div>
+                    <br>
+                    <h5> معلومات المدارس </h5>
 
-<div class="row cont-row justify-content-center">
-<div class="col-md-3">
-   <div>
-      <img class="my-card img-fluid  mx-auto"src="{% static 'images/My-Computer.png'%}" alt="">
-   </div>
-   <br>
-      <h5> مختبرات الحاسوب </h5>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="{% url 'school_lab'%}">
+                    <div>
+                        <img class="my-card img-fluid  mx-auto" src="{% static 'images/My-Computer.png'%}" alt="">
+                    </div>
+                    <br>
+                    <h5> مختبرات الحاسوب </h5>
 
+                </a>
+            </div>
 
-</div>
-
-<div class="col-md-3">
-   <div>
-      <img class="my-card img-fluid  mx-auto"src="{% static 'images/wifi.png'%}" alt="">
-   </div>
- <br>
-      <h5> الانترنت والشبكات </h5>
-
-
-</div>
-
-<div class="col-md-3">
-   <div>
-      <img class="my-card img-fluid mx-auto"src="{%static 'images/laboratory.png'%}" alt="">
-   </div>
-      <br>
-      <h5> المختبرات العلمية</h5>
-   </div>
-</div>
-
-<div class="row justify-content-center cont-row">
-
-    <div class="col-md-3 align-justify-center">
-
-  <div>
-      <img class="my-card img-fluid  mx-auto"src="{%static 'images/books.png'%}" alt="">
-   </div>
- <br>
-   <h5> المكتبات </h5>
-
-</div>
-
-<div class="col-md-3">
-   <div>
-      <img class="my-card img-fluid mx-auto"src="{%static 'images/lcd.png'%}" alt="">
-   </div>
-      <br>
-      <h5> أجهزة العرض </h5>
-   </div>
+            <div class="col-md-3">
+                <div>
+                    <img class="my-card img-fluid  mx-auto" src="{% static 'images/wifi.png'%}" alt="">
+                </div>
+                <br>
+                <h5> الانترنت والشبكات </h5>
 
 
+            </div>
 
-<div class="col-md-3 align-justify-center">
-  <div>
-      <img class="my-card img-fluid  mx-auto"src="{%static 'images/copyer.png'%}" alt="">
-  </div>
+            <div class="col-md-3">
+                <div>
+                    <img class="my-card img-fluid mx-auto" src="{%static 'images/laboratory.png'%}" alt="">
+                </div>
+                <br>
+                <h5> المختبرات العلمية</h5>
+            </div>
+        </div>
+        <div class="row justify-content-center cont-row">
 
- <br>
-   <h5> الطابعات والتصوير </h5>
+            <div class="col-md-3 align-justify-center">
 
-</div>
+                <div>
+                    <img class="my-card img-fluid  mx-auto" src="{%static 'images/books.png'%}" alt="">
+                </div>
+                <br>
+                <h5> المكتبات </h5>
+
+            </div>
+
+            <div class="col-md-3">
+                <div>
+                    <img class="my-card img-fluid mx-auto" src="{%static 'images/lcd.png'%}" alt="">
+                </div>
+                <br>
+                <h5> أجهزة العرض </h5>
+            </div>
 
 
-</div>
+            <div class="col-md-3 align-justify-center">
+                <div>
+                    <img class="my-card img-fluid  mx-auto" src="{%static 'images/copyer.png'%}" alt="">
+                </div>
+
+                <br>
+                <h5> الطابعات والتصوير </h5>
+
+            </div>
+
+
+        </div>
+    </div>
 </div>
 
 {% endblock content%}

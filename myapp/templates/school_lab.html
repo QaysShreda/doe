@@ -1,0 +1,60 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block content %}
+<div class="container p-3 border my-3 text-center justify-content-center bg-light">
+    <div class="row justify-content-center mt-3">
+        <h3>مختبرات الحاسوب - مدارس المديرية</h3>
+    </div>
+    <br>
+     <table class="table table-striped">
+          <thead class="border-bottom font-weight-bold">
+          <tr>
+              <td>#</td>
+              <td>School Id</td>
+              <td>School Name</td>
+              <td>Lab Id</td>
+              <td>Computers</td>
+              <td>Area</td>
+              <td>Internet</td>
+              <td>Network</td>
+              <td>
+                  <a href="{%url 'school_lab_form'%}" class="btn btn-outline-success">
+                      <i class="fas fa-plus">Add new Lab</i>
+                  </a>
+              </td>
+          </tr>
+          </thead>
+         <tbody>
+         {% for lab in school_lab%}
+            <tr>
+                <td> {{ forloop.counter }} </td>
+                <td>{{lab.school.school_id}}</td>
+                <td>{{lab.school.name}}</td>
+                <td>{{lab.lab_id}}</td>
+                <td>5</td>
+                <td>{{lab.area}}</td>
+                <td>{{lab.internet_connection}}</td>
+                <td>{{lab.network}}</td>
+
+                <td>
+                    <a href="{% url 'school_lab_computers' lab.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-eye fa-lg"></i>
+                    </a> &nbsp;&nbsp;
+                        <a href="{% url 'school_lab_update' lab.id %}" class="btn text-secondary px-0">
+                            <i class="far fa-edit fa-lg"></i>
+                        </a>
+                        <form action="" class="d-inline">
+                            {%csrf_token%}
+                            <button type="submit" class="btn">
+                                <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+         {%endfor%}
+         </tbody>
+
+     </table>
+</div>
+{% endblock content %}

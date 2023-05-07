@@ -5,68 +5,97 @@
 
 {% block content%}
 <div class="container p-3 my-3 border bg-light justify-content-center ">
-            <form action="" method="post" autocomplete="off">
-                {%csrf_token%}
-                <div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 float-left">
-                            {{form.employee_name | as_crispy_field}}
-                        </div>
-                    </div>
+    <form action="" method="post" autocomplete="off">
+        {%csrf_token%}
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 float-left">
+                    {{form.employee_name | as_crispy_field}}
+                </div>
+                <div class="col-md-4 float-left">
+                    {{form.department | as_crispy_field}}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 float-left">
+                    {{form.brand_name | as_crispy_field}}
                 </div>
 
-                <div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 float-left">
-                            {{form.brand_name | as_crispy_field}}
-                        </div>
+                <div class="col-md-4 float-left">
+                    {{form.cpu | as_crispy_field}}
+                </div>
+            </div>
+        </div>
 
-                        <div class="col-md-4 float-left">
-                            {{form.cpu | as_crispy_field}}
-                        </div>
-                    </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 float-left">
+                {{form.ram| as_crispy_field}}
+            </div>
+
+            <div class="col-md-4 float-left">
+                {{form.ram_type | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 float-left">
+                {{form.hdd | as_crispy_field}}
+            </div>
+
+            <div class="col-md-4 float-left">
+                {{form.hdd_type | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {{form.serial | as_crispy_field}}
+            </div>
+        </div>
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 float-left">
+                    {{form.ip| as_crispy_field}}
                 </div>
 
-                <div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 float-left">
-                            {{form.ram| as_crispy_field}}
-                        </div>
+                <div class="col-md-4 float-left">
+                    {{form.monitor | as_crispy_field}}
+                </div>
+            </div>
 
-                        <div class="col-md-4 float-left">
-                            {{form.hdd | as_crispy_field}}
-                        </div>
-                    </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 float-left">
+                    {{form.anti_viruse| as_crispy_field}}
                 </div>
 
-                <div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 float-left">
-                            {{form.ip| as_crispy_field}}
-                        </div>
-
-                        <div class="col-md-4 float-left">
-                            {{form.monitor | as_crispy_field}}
-                        </div>
-                    </div>
+                <div class="col-md-4 float-left">
+                    {{form.expiry_date | as_crispy_field}}
                 </div>
-                <div>
+            </div>
+        </div>
 
-                    <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-success btn-block btn-lg">
-                                Submit
-                            </button>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="{% url 'doe_computer'%}" class="btn btn-secondary btn-block btn-lg">
-                                <i class="fas fa-stream"></i> Back to List
-                            </a>
-                        </div>
-                    </div>
 
+        <div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success btn-block btn-lg">
+                        Submit
+                    </button>
                 </div>
-            </form>
+                <div class="col-md-4">
+                    <a href="{% url 'doe_computer'%}" class="btn btn-secondary btn-block btn-lg">
+                        <i class="fas fa-stream"></i> Back to List
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </form>
 </div>
 
 

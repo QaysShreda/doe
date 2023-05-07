@@ -3,71 +3,80 @@
 {% load static %}
 
 {% block content%}
-<div class="container container text-center cont justify-content-center">
-    <div class="row cont-row justify-content-center">
-        <div class="col-md-3">
-            <a href="{% url 'doe_computer'%}">
-                           <div>
-                <img class="my-card img-fluid  mx-auto" src="{% static 'images/My-Computer.png'%}" alt="">
-            </div>
-            <br>
-            <h5> أجهزة الحاسوب </h5>
-
-            </a>
-
-        </div>
-
-        <div class="col-md-3">
-            <div>
-                <img class="my-card img-fluid  mx-auto" src="{% static 'images/network-connector.png'%}" alt="">
-            </div>
-            <br>
-            <h5> الشبكات والانترنت </h5>
-        </div>
-
-        <div class="col-md-3">
-            <div>
-                <img class="my-card img-fluid  mx-auto" src="{% static 'images/phone.png'%}" alt="">
-            </div>
-            <br>
-            <h5> شبكة الهاتف </h5>
+<div class="container text-center justify-content-center h-auto">
+    <div class="row border mt-1">
+        <div class="col-md-12 mt-2 pb-2">
+            <h3 class="text-right"> مكتب مديرية التربية والتعليم </h3>
         </div>
     </div>
 
-        <div class="row cont-row justify-content-center">
-            <div class="col-md-3">
-                <a href="{% url 'doe_printer'%}">
+
+    <div class="row justify-content-center mt-1 ">
+        <div class="section border">
+            <div class="row  justify-content-center mt-2 ">
+                <div class="col-md-3">
+                    <a href="{% url 'doe_computer'%}">
+                        <div>
+                            <img class="my-card img-fluid  mx-auto" src="{% static 'images/My-Computer.png'%}" alt="">
+                        </div>
+                        <h5> أجهزة الحاسوب </h5>
+                    </a>
+                </div>
+
+                <div class="col-md-3">
+                    <a href="{% url 'doe_network'%}">
+                        <div>
+                            <img class="my-card img-fluid  mx-auto" src="{% static 'images/network-connector.png'%}"
+                                 alt="">
+                        </div>
+                        <h5> الشبكات والانترنت </h5>
+                    </a>
+
+                </div>
+
+                <div class="col-md-3">
                     <div>
-                        <img class="my-card img-fluid  mx-auto" src="{% static 'images/printer.png'%}" alt="">
+                        <img class="my-card img-fluid  mx-auto" src="{% static 'images/phone.png'%}" alt="">
                     </div>
-                    <br>
-                    <h5> الطابعات </h5>
-                </a>
-
+                    <h5> شبكة الهاتف </h5>
+                </div>
             </div>
 
-        <div class="col-md-3">
-            <a href="{% url 'doe_copier'%}">
-                <div>
-                    <img class="my-card img-fluid  mx-auto" src="{% static 'images/copyer.png'%}" alt="">
+            <div class="row cont-row justify-content-center mt-5 mb-3">
+                <div class="col-md-3">
+                    <a href="{% url 'doe_printer'%}">
+                        <div>
+                            <img class="my-card img-fluid  mx-auto" src="{% static 'images/printer.png'%}" alt="">
+                        </div>
+                        <h5> الطابعات </h5>
+                    </a>
+
                 </div>
-            <br>
-            <h5> ماكينات التصوير </h5>
-            </a>
 
-        </div>
+                <div class="col-md-3">
+                    <a href="{% url 'doe_copier'%}">
+                        <div>
+                            <img class="my-card img-fluid  mx-auto" src="{% static 'images/copyer.png'%}" alt="">
+                        </div>
+                        <h5> ماكينات التصوير </h5>
+                    </a>
 
-        <div class="col-md-3">
-            <a href="{% url 'doe_projector'%}">
-                <div>
-                    <img class="my-card img-fluid  mx-auto" src="{% static 'images/lcd.png'%}" alt="">
                 </div>
-                <br>
-                <h5> أجهزة العرض </h5>
-            </a>
 
+                <div class="col-md-3">
+                    <a href="{% url 'doe_projector'%}">
+                        <div>
+                            <img class="my-card img-fluid  mx-auto" src="{% static 'images/lcd.png'%}" alt="">
+                        </div>
+                        <h5> أجهزة العرض </h5>
+                    </a>
+
+                </div>
+            </div>
         </div>
     </div>
+
 
 </div>
+
 {% endblock content%}

@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags%}
+{% block content%}
+<br>
+<div class="container justify-content-center p-3 my-3 border bg-light ">
+    <form action="{% url 'school_lab_form'%}" method="post">
+        {%csrf_token%}
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-10">
+                        {{form.school| as_crispy_field}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        {{form.area | as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        {{form.teacher | as_crispy_field}}
+                    </div>
+                    <div class="col-md-5">
+                        {{form.teacher_load | as_crispy_field}}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        {{form.internet_connection | as_crispy_field}}
+
+                    </div>
+                    <div class="col-md-4">
+                        {{form.projector | as_crispy_field}}
+                    </div>
+                    <div class="col-md-4">
+                        {{form.network | as_crispy_field}}
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row ">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn-success btn-lg btn-block">
+                            Submit
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'school_lab'%}" class="btn btn-secondary btn-lg btn-block">
+                            <i class="fas fa-stream"></i> Back
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock content%}

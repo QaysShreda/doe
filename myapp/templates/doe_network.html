@@ -1,0 +1,161 @@
+{% extends 'base.html'%}
+{% load static%}
+
+{% block content%}
+<div class="container justify-content-center">
+    <div class="row justify-content-center my_panel ">
+        <div class="col-md-10 border border-primary ">
+            <div class="row justify-content-center my_table_title text-center">
+                <h3> Fiber Optics Line</h3>
+            </div>
+
+            <div class="row my_table">
+                <table class="table table-striped">
+                    <thead class="border-bottom  font-weight-bold">
+                    <tr>
+                        <td> #</td>
+                        <td>Location</td>
+                        <td>Line Code</td>
+                        <td>Speed</td>
+                        <td>Contact</td>
+                        <td>
+                            <a href="{% url 'doe_fiber_form'%}" class="btn btn-outline-success ">
+                                <i class="fas fa-plus">Add New</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for f in fiber%}
+                    <tr>
+                        <td> {{ forloop.counter }}</td>
+                        <td> {{f.location}}</td>
+                        <td> {{f.line_code}}</td>
+                        <td>{{f.speed}}</td>
+                        <td>{{f.support}}</td>
+                        <td>
+                            <a href="{%url 'doe_fiber_update' f.id %}" class="btn text-secondary  d-inline">
+                                <i class="far fa-edit fa-lg"></i>
+                            </a>
+                            <form action="{%url 'doe_fiber_delete' f.id%}" class="d-inline ">
+                                <button type="submit" class="btn d-inline">
+                                    <i class="far fa-trash-alt  fa-lg text-danger "> </i>
+                                </button>
+                            </form>
+
+                        </td>
+
+                    </tr>
+                    {% endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center my_panel">
+        <div class="col-md-10 border border-primary">
+            <div class="row justify-content-center   text-center my_table_title">
+                <h3> Systems ( Common IP )</h3>
+            </div>
+            <div class="row my_table">
+                <table class="table table-striped my_table">
+                    <thead class="border-bottom  font-weight-bold">
+                    <tr>
+                        <td> #</td>
+                        <td>Department</td>
+                        <td> Destination</td>
+                        <td> IP</td>
+                        <td>Port</td>
+                        <td>
+                            <a href="{% url 'doe_ip_form'%}" class="btn btn-outline-success">
+                                <i class="fas fa-plus">Add New</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for c_ip in ip%}
+                    <tr>
+                        <td> {{forloop.counter}}</td>
+                        <td> {{c_ip.department}}</td>
+                        <td>{{ c_ip.destination}}</td>
+                        <td>{{c_ip.ip}}</td>
+                        <td>{{c_ip.port}}</td>
+                        <td>
+                            <a href="{%url 'doe_ip_update' c_ip.id%}" class="btn text-secondary">
+                                <i class="far fa-edit fa-lg"></i></a>
+
+                            <form action="{%url 'doe_ip_delete' c_ip.id%}" class="d-inline">
+                                {% csrf_token%}
+                                <button type="submit" class="btn d-inline">
+                                    <i class="far fa-trash-alt  fa-lg text-danger "> </i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center my_panel ">
+        <div class="col-md-10 border border-primary ">
+            <div class="row justify-content-center my_table_title text-center">
+                <h3> Wifi Router</h3>
+            </div>
+
+            <div class="row my_table">
+                <table class="table table-striped">
+                    <thead class="border-bottom  font-weight-bold">
+                    <tr>
+                        <td> #</td>
+                        <td><h5>Model</h5></td>
+                        <td><h5>Location</h5></td>
+                        <td><h5>WAN IP</h5></td>
+                        <td><h5>Lan IP </h5></td>
+                        <td><h5>SSID</h5></td>
+                        <td><h5>Password</h5></td>
+                        <td>
+                            <a href="{% url 'doe_wifi_form'%}" class="btn btn-outline-success ">
+                                <i class="fas fa-plus">Add New</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for w in wifi%}
+                    <tr>
+                        <td>{{ forloop.counter}}</td>
+                        <td> {{w.router}}</td>
+                        <td> {{w.location}}</td>
+                        <td>{{w.ip}}</td>
+                        <td>{{w.lan}}</td>
+                        <td>{{w.ssid}}</td>
+                        <td>{{w.password}}</td>
+                        <td>
+                            <a href="{%url 'doe_wifi_update' w.id%}" class="btn text-secondary">
+                                <i class="far fa-edit fa-lg"></i></a>
+
+                            <form action="{%url 'doe_wifi_delete' w.id%}" class="d-inline">
+                                {% csrf_token%}
+                                <button type="submit" class="btn d-inline">
+                                    <i class="far fa-trash-alt  fa-lg text-danger "> </i>
+                                </button>
+                            </form>
+                        </td>
+
+                    </tr>
+                    {% endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock content%}

@@ -1,0 +1,84 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{%block content %}
+
+<div class="container p-3 border my-3 text-center  bg-light">
+    <div class="row justify-content-center  pl-3">
+        <div class="col-md-2">
+            <a href="{% url 'school_lab'%}" class="btn btn-secondary  btn-block">
+                   <i class="fas fa-stream"></i> Back
+                </a>
+        </div>
+        <div class="col-md-8 justify-content-left">
+            <h4>مختبر الحاسوب  مدرسة : {{lab.school.name}}</h4>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+
+    </div>
+
+
+
+    <div class="row mt-1 text-left ml-5">
+        <div class="col-md-6">
+
+        </div>
+
+    </div>
+
+
+
+
+<hr style="width:100%">
+
+  <table class="table table-striped">
+          <thead class="border-bottom font-weight-bold">
+          <tr>
+              <td>#</td>
+              <td>Brand Name</td>
+              <td>CPU</td>
+              <td>Ram</td>
+              <td>HD</td>
+              <td>Internet</td>
+              <td>OS</td>
+              <td>
+                  <a href="{%url 'school_computer_form' lab=lab.id %}" class="btn btn-outline-success">
+                      <i class="fas fa-plus">Add new Computer</i>
+                  </a>
+              </td>
+          </tr>
+          </thead>
+         <tbody>
+         {% for comp in computer%}
+            <tr>
+                <td>{{  forloop.counter  }} </td>
+                <td>{{ comp.brand }} </td>
+                <td>{{comp.cpu}}</td>
+                <td>{{comp.ram}}</td>
+                <td>{{comp.hdd}}</td>
+                <td>{{comp.internet}}</td>
+                <td>{{comp.os}}</td>
+                <td>
+               &nbsp;
+                        <a href="{% url 'school_computer_update' lab=lab.id id=comp.id%}" class="btn text-secondary px-0">
+                            <i class="far fa-edit fa-lg"></i>
+                        </a>
+                        <form action="{% url 'school_computer_delete' comp.id%}" class="d-inline">
+                            {%csrf_token%}
+                            <button type="submit" class="btn">
+                                <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+         {%endfor%}
+         </tbody>
+
+     </table>
+
+
+</div>
+
+{% endblock content %}
