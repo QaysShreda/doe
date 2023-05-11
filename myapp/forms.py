@@ -1,5 +1,6 @@
 from django import forms
-from .models import Doe_computer,Doe_copier,Doe_printer,Doe_projector,Doe_Fiber,Common_Ip,Doe_Wifi,School_lab,School,School_computer
+from .models import *
+
 
 
 
@@ -52,7 +53,7 @@ class School_form(forms.ModelForm):
     class Meta:
         model = School
         fields = '__all__'
-        labels={ 'school_id':'National number','name':'Name ar','name_en':'Name en','l_level':'Lower Level','u_level':'Upper Level','st_number':'Student number','phone_number':'Phone','mobile':'Principal mobile'}
+        labels={ 'school_id':'National number','name':'School Name ar','name_en':'School Name en','l_level':'Lower Level','u_level':'Upper Level','st_number':'Student number','phone_number':'Phone','mobile':'Principal mobile','science':'علمي' ,'literary':'أدبي','commercial':'تجاري' ,'industrial':'صناعي'}
 
 class School_lab_form(forms.ModelForm):
     class Meta:
@@ -64,3 +65,9 @@ class School_Computer_Form(forms.ModelForm):
     class Meta:
         model = School_computer
         fields = '__all__'
+
+class School_Network_Form(forms.ModelForm):
+    class Meta:
+        model = School_Network
+        fields = '__all__'
+        labels={'internet':'Yes','wifi':'Yes','speed_download':'Download Speed','speed_upload':'Upload Speed','router':'Router Brand','lan':'Yes','port':'Number of Ports','ap_number':'AP Number'}

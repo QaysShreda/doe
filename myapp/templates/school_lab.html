@@ -2,59 +2,89 @@
 {% load static %}
 
 {%block content %}
-<div class="container p-3 border my-3 text-center justify-content-center bg-light">
+<div class="container p-3 border my-3 text-center justify-content-center bg-light ">
+
+
+
     <div class="row justify-content-center mt-3">
         <h3>مختبرات الحاسوب - مدارس المديرية</h3>
     </div>
-    <br>
-     <table class="table table-striped">
-          <thead class="border-bottom font-weight-bold">
-          <tr>
-              <td>#</td>
-              <td>School Id</td>
-              <td>School Name</td>
-              <td>Lab Id</td>
-              <td>Computers</td>
-              <td>Area</td>
-              <td>Internet</td>
-              <td>Network</td>
-              <td>
-                  <a href="{%url 'school_lab_form'%}" class="btn btn-outline-success">
-                      <i class="fas fa-plus">Add new Lab</i>
-                  </a>
-              </td>
-          </tr>
-          </thead>
-         <tbody>
-         {% for lab in school_lab%}
-            <tr>
-                <td> {{ forloop.counter }} </td>
-                <td>{{lab.school.school_id}}</td>
-                <td>{{lab.school.name}}</td>
-                <td>{{lab.lab_id}}</td>
-                <td>5</td>
-                <td>{{lab.area}}</td>
-                <td>{{lab.internet_connection}}</td>
-                <td>{{lab.network}}</td>
+        <row>
+            <div class="col-md-2 ">
+                <a href="{% url 'school'%}">
+                  <h4 style="color:blue;font-size:16px;text-align:left;">  <i class="fa fa-arrow-left fa-md" aria-hidden="true"></i> &nbsp Back</h4>
+                </a>
+        </div>
+    </row>
+    <table class="table table-striped">
+        <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>#</td>
+            <td>School Id</td>
+            <td>School Name</td>
+            <td>Lab Id</td>
+            <td>Computers</td>
+            <td>Area</td>
+            <td>Internet</td>
+            <td>Network</td>
+            <td>
+                <a href="{%url 'school_lab_form'%}" class="btn btn-outline-success">
+                    <i class="fas fa-plus">Add new Lab</i>
+                </a>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for lab in school_lab%}
+        <tr>
+            <td> {{ forloop.counter }}</td>
+            <td>{{lab.school.school_id}}</td>
+            <td>{{lab.school.name}}</td>
+            <td>{{lab.id}}</td>
+            <td>5</td>
+            <td>{{lab.area}}</td>
+            <td>{{lab.internet_connection}}</td>
+            <td>{{lab.network}}</td>
 
-                <td>
-                    <a href="{% url 'school_lab_computers' lab.id %}" class="btn text-secondary px-0">
-                        <i class="far fa-eye fa-lg"></i>
-                    </a> &nbsp;&nbsp;
-                        <a href="{% url 'school_lab_update' lab.id %}" class="btn text-secondary px-0">
-                            <i class="far fa-edit fa-lg"></i>
-                        </a>
-                        <form action="" class="d-inline">
-                            {%csrf_token%}
-                            <button type="submit" class="btn">
-                                <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-         {%endfor%}
-         </tbody>
+            <td>
+                <a href="{% url 'school_lab_computers' lab.id %}" class="btn text-secondary px-0">
+                    <i class="far fa-eye fa-lg"></i>
+                </a> &nbsp;&nbsp;
+                <a href="{% url 'school_lab_update' lab.id %}" class="btn text-secondary px-0">
+                    <i class="far fa-edit fa-lg"></i>
+                </a>
+                <form action="" class="d-inline">
+                    {%csrf_token%}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {%endfor%}
+        </tbody>
 
-     </table>
+    </table>
+
+    <div class="text-center">
+        <div class="row justify-content-center">
+
+            <div class="col-md-2">
+                <a href="{% url 'school'%}" class="btn btn-secondary btn-lg btn-block">
+                    <i class="fas fa-stream"></i> Back
+                </a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="{% url 'exportSchoolLab'%}" class="btn btn-success btn-lg btn-block ">
+                    <i class="fas fa-file-excel"></i> Export xls
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+
+
 </div>
 {% endblock content %}

@@ -1,0 +1,92 @@
+
+{%extends 'base.html'%}
+{% load crispy_forms_tags%}
+
+{%block content%}
+<div class="container-fluid p-3 border my-3 text-center justify-content-center bg-light ">
+    <div class="row justify-content-center">
+        <h3> الشبكات والانترنت (مدارس المديرية) </h3>
+    </div>
+    <row>
+            <div class="col-md-12 ">
+                <a href="{% url 'school'%}">
+                  <h4 style="color:blue;font-size:16px;text-align:left;">  <i class="fa fa-arrow-left fa-md" aria-hidden="true"></i> &nbsp Back</h4>
+                </a>
+        </div>
+    </row>
+    <table class="table table-striped">
+        <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>#</td>
+            <td>School Name</td>
+            <td>Internet</td>
+            <td>Internet Source</td>
+            <td>Download</td>
+            <td>Upload</td>
+            <td> Router</td>
+            <td>Wireless</td>
+            <td>AP number</td>
+            <td>Coverage</td>
+            <td>AP Brand</td>
+            <td>Lan Network</td>
+            <td>Switch</td>
+            <td>Ports</td>
+
+
+            <td><a href="{%url 'school_network_form' %}" class="btn btn-outline-success">
+                <i class="fas fa-plus"> New</i>
+            </a>
+
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for network in school_network%}
+        <tr class="text-center">
+            <td>{{forloop.counter}}</td>
+            <td>{{network.school.name}}</td>
+            <td>{{network.internet}}</td>
+             <td>{{network.source}}</td>
+            <td>{{network.speed_download}}</td>
+            <td>{{network.speed_upload}}</td>
+            <td>{{network.router}}</td>
+            <td>{{network.wifi}}</td>
+            <td>{{network.ap_number}}</td>
+            <td>{{network.brand}}</td>
+            <td>{{network.coverage}}</td>
+            <td>{{network.lan}}</td>
+            <td>{{network.switch}}</td>
+            <td>{{network.port}}</td>
+            <td>
+                <a href="{% url 'school_network_update' network.id%}" class="btn text-secondary px-0">
+                    <i class="far fa-edit fa-lg"></i>
+                </a>
+                  <form action="{% url 'school_network_delete' network.id%}" class="d-inline">
+                    {%csrf_token%}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+
+                </form>
+            </td>
+        </tr>
+
+        {%endfor%}
+        </tbody>
+
+
+    </table>
+    <div class="row justify-content-center">
+            <div class="col-md-2">
+                            <a href="{% url 'exportSchoolNetwork'%}" class="btn btn-success btn-lg btn-block ">
+                                <i class="fas fa-file-excel"></i> Export xls
+                            </a>
+                        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock content%}

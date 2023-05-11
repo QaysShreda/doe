@@ -7,6 +7,12 @@
     <div class="row text-center">
        <h4> ماكينات التصوير - مديرية التربية     </h4>
     </div>
+
+        <div class="col-md-12 ">
+                <a href="{% url 'doe'%}">
+                  <h4 style="color:blue;font-size:16px;">  <i class="fa fa-arrow-left fa-md" aria-hidden="true"></i> &nbsp Back</h4>
+                </a>
+        </div>
     <table class="table table-striped mt-2">
         <thead class="border-bottom  font-weight-bold">
         <tr>
@@ -46,5 +52,25 @@
             {%endfor%}
         </tbody>
     </table>
+
+     <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="row justify-content-center">
+                             <div class="col-md-2">
+                        <a href="{% url 'doe'%}" class="btn btn-secondary btn-lg btn-block">
+                            <i class="fas fa-stream"></i> Back
+                        </a>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a href="{% url 'exportDoeCopier'%}" class="btn btn-success btn-lg btn-block ">
+                            <i class="fas fa-file-excel"></i> Export xls
+                        </a>
+                    </div>
+
+                        </div>
+                    </div>
+
+                </div>
 </div>
 {% endblock content%}

@@ -1,0 +1,221 @@
+{%extends 'base.html' %}
+{% load crispy_forms_tags%}
+
+{% block content%}
+<div class="container p-3 my-3 border bg-light">
+    <form id='form' action="" method="post">
+        {% csrf_token%}
+
+        <div class="row justify-content-center ">
+            <div class="col-md-6 border">
+
+                <div class="row justify-content-center border">
+                    <div class="col-md-12">
+                        {{form.school | as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-5 pr-0">
+                        <h5>Internet Connection :</h5>
+                    </div>
+                    <div class="col-md-7 pl-0">
+                        {{form.internet | as_crispy_field}}
+
+
+                    </div>
+                </div>
+
+                <div class="row justify-content-left mt-2 ">
+                    <div class="col-md-12">
+                        {{form.source | as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        {{form.speed_download | as_crispy_field}}
+                    </div>
+
+                    <div class="col-md-6">
+                        {{form.speed_upload | as_crispy_field}}
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        {{form.router | as_crispy_field}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6 border">
+                <div class="row justify-content-center mt-3">
+
+                    <div class="col-md-4 pr-0">
+                        <h5>Wireless Network: </h5>
+                    </div>
+
+                    <div class="col-md-8 ">
+                        {{form.wifi | as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        {{form.ap_number | as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        {{form.brand | as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        {{form.coverage | as_crispy_field}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row  justify-content-center mt-3">
+            <div class="col-md-6 border">
+                <div class="row justify-content-center mt-2">
+                    <div class="col-md-4 pr-0">
+                        <h5>Wired Network :</h5>
+                    </div>
+
+                    <div class="col-md-8 pl-0">
+                        {{form.lan | as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-3">
+                    <div class="col-md-7">
+                        {{form.switch | as_crispy_field}}
+                    </div>
+
+                    <div class="col-md-5 ">
+                        {{form.port | as_crispy_field}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success btn-lg btn-block">
+                    Submit
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a href="{% url 'school_network'%}" class="btn btn-secondary btn-lg btn-block">
+                    <i class="fas fa-stream"></i> Back
+                </a>
+            </div>
+
+        </div>
+
+    </form>
+
+
+</div>
+
+<script>
+const checkbox = document.forms['form'].elements['internet']
+const wificheckbox = document.forms['form'].elements['wifi']
+const wiredcheckbox = document.forms['form'].elements['lan']
+
+   document.addEventListener("DOMContentLoaded", function(e) {
+
+
+   if (checkbox.checked == false)
+   {
+   document.forms['form'].elements['source'].disabled = true;
+   document.forms['form'].elements['coverage'].disabled = true;
+   document.forms['form'].elements['speed_upload'].disabled = true;
+   document.forms['form'].elements['speed_download'].disabled = true;
+   document.forms['form'].elements['router'].disabled = true;
+   }
+
+   if(wificheckbox.checked == false)
+   {
+   document.forms['form'].elements['ap_number'].disabled = true;
+   document.forms['form'].elements['brand'].disabled = true;
+   document.forms['form'].elements['coverage'].disabled = true;
+   }
+
+   if(wiredcheckbox.checked == false)
+   {
+   document.forms['form'].elements['switch'].disabled = true;
+   document.forms['form'].elements['port'].disabled = true;
+   }
+
+  });
+
+
+
+
+
+checkbox.addEventListener('change', (event) => {
+  if (event.currentTarget.checked) {
+    document.forms['form'].elements['source'].disabled = false;
+    document.forms['form'].elements['speed_download'].disabled = false;
+    document.forms['form'].elements['speed_upload'].disabled = false;
+    document.forms['form'].elements['router'].disabled = false;
+  } else {
+    document.forms['form'].elements['source'].disabled = true;
+    document.forms['form'].elements['speed_download'].disabled = true;
+    document.forms['form'].elements['speed_upload'].disabled = true;
+    document.forms['form'].elements['router'].disabled = true;
+  }
+});
+
+
+
+
+wificheckbox.addEventListener('change', (event) => {
+  if (event.currentTarget.checked) {
+    document.forms['form'].elements['ap_number'].disabled = false;
+    document.forms['form'].elements['brand'].disabled = false;
+    document.forms['form'].elements['coverage'].disabled = false;
+
+  } else {
+    document.forms['form'].elements['ap_number'].disabled = true;
+    document.forms['form'].elements['brand'].disabled = true;
+    document.forms['form'].elements['coverage'].disabled = true;
+  }
+});
+
+
+
+
+wiredcheckbox.addEventListener('change', (event) => {
+  if (event.currentTarget.checked) {
+    document.forms['form'].elements['switch'].disabled = false;
+    document.forms['form'].elements['port'].disabled = false;
+
+
+  } else {
+    document.forms['form'].elements['switch'].disabled = true;
+    document.forms['form'].elements['port'].disabled = true;
+
+  }
+});
+
+
+
+
+</script>
+
+
+{%endblock content %}

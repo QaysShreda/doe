@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpRequest
-from .forms import ComputerForm,CopierForm,PrinterForm,ProjectorForm,FiberForm,IPForm,WifiForm,School_lab_form,School_form,School_Computer_Form
-from .models import Doe_computer,Doe_copier,Doe_printer,Doe_projector,Doe_Fiber,Doe_Wifi,Common_Ip,School_lab,School,School_computer
+from .forms import *
+from .models import *
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+
+
+
 # Create your views here.
 
 
@@ -59,15 +63,17 @@ def register(request):
 def school(request):
     return render(request,'school.html')
 
+@login_required(login_url='login')
 def doe(request):
     return render(request,'doe.html')
 
+@login_required(login_url='login')
 def doe_computer(request):
     context = {'doe_computer': Doe_computer.objects.all()}
     return render(request,'doe_computer.html',context)
 
 
-
+@login_required(login_url='login')
 def computer_form(request,id =0):
     if request.method == "GET":
         if id == 0:
@@ -360,3 +366,265 @@ def school_computer_delete(request,id=0):
         x = my_lab.id
         computer.delete()
     return school_lab_computers(request,x)
+
+def school_network(request):
+    school_network = School_Network.objects.all()
+    return render(request,'school_network.html',{'school_network':school_network})
+
+def school_network_form(request,id=0):
+    if request.method == 'GET':
+        if id == 0:
+            form = School_Network_Form()
+        else:
+            network = School_Network.objects.get(pk=id)
+            form = School_Network_Form(instance=network)
+        return render(request,'school_network_form.html',{'form':form})
+    else:
+        if id==0:
+            form = School_Network_Form(request.POST)
+        else:
+            network = School_Network.objects.get(pk=id)
+            form = School_Network_Form(request.POST,instance=network)
+    if form.is_valid():
+        form.save()      
+    return redirect('school_network')
+            
+def school_network_delete(request,id=0):
+    if id !=0:
+       network = School_Network.objects.get(id=id)
+       network.delete()
+    return redirect('school_network')
+
+def exportDoeComputer(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Doe_computers.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('computer')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Emp Name', 'Department', 'Brand' ,'CPU','Ram','Ram Type','HDD','Hdd_type','IP','Monitor','Serial','Anti Virus','Expired']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+    rows = Doe_computer.objects.all().values_list('employee_name','department','brand_name','cpu','ram','ram_type','hdd','hdd_type','ip','monitor','serial','anti_viruse','expiry_date')
+
+
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+def exportSchoolInfo(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="SchoolInfo.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Schools')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Id','Name','Name_en','L level','U level','Type','ST number','Phone','Location','Principal','Region','Mobile','Science','Literary','Commercial','Industrial']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+    rows = School.objects.all().values_list('school_id','name','name_en','l_level','u_level','type','st_number','phone_number','location','principal','region','mobile','science','literary','commercial','industrial')
+
+
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+def exportSchoolLab(self):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="SchoolLab.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('School_Lab')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['school','Network','Area','Internal','Teacher','Load','Projector']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+    rows = School_lab.objects.all().values_list('school','network','area','internet_connection','teacher','teacher_load','projector')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+
+def exportSchoolComputer(request,id =0):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="SchoolComputer.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('School_Computer')
+
+    # Sheet header, first row
+    row_num = 1
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Brand','CPU','Ram','Hdd','Internet','OS','Serial','Lab','School']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+    if(id!=0):
+        lab = School_lab.objects.get(id = id)
+
+    rows = School_computer.objects.filter(lab = lab).values_list('brand','cpu','ram','hdd','internet','os','serial','lab','school')
+    scholl = lab.school.name
+    ws.write(0, 0, scholl, font_style)
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+
+
+
+def exportDoeCopier(self):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="DoeCopier.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Doe_Copier')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Brand_name','IP','Location','Company','Company_phone','Driver']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+    rows = Doe_copier.objects.all().values_list('brand_name','ip','place','company','company_phone','driver')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+def exportDoePrinter(self):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="DoePrinter.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Doe_Printer')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Model','Employee','Cartrigr_number','Driver']
+
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+    rows = Doe_printer.objects.all().values_list('model_name','employee_name','Cartridge_number','driver')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+
+
+def exportSchoolNetwork(self):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="SchoolNetwork.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('School_Network')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['school Name','internet','Upload Speed','Download Speed','Source','Router','Wifi','AP number','AP brand','Coverage (100%)','Lan','Switch','Number Ports','School Id']
+
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    schools = School.objects.all().values_list('school_id','name')
+    font_style = xlwt.XFStyle()
+    rows = School_Network.objects.all().values_list('internet','speed_upload','speed_download','source','router','wifi','ap_number','brand','coverage','lan','switch','port','school')
+    for row in rows:
+        row = list(row)
+        row_num += 1
+        for s in schools:
+            if (s[0]==row[12]):
+                  print(row[12]  )
+                  row.insert(0, s[1])
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+
+

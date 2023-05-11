@@ -50,6 +50,8 @@ urlpatterns =[
     path('<int:id>/doe_wifi_delete/', views.doe_wifi_delete, name="doe_wifi_delete"),
 
 
+
+
 # School
 
     path('school_info', views.school_info, name="school_info"),
@@ -70,6 +72,20 @@ urlpatterns =[
     path('<int:id>/school_computer_delete', views.school_computer_delete, name='school_computer_delete'),
     path('<int:id>/school_lab_computers',views.school_lab_computers,name='school_lab_computers'),
 
+    path('school_network',views.school_network,name='school_network'),
+    path('school_network_form',views.school_network_form,name='school_network_form'),
+    path('<int:id>/school_network_form',views.school_network_form,name='school_network_update'),
+    path('<int:id>/school_network_delete', views.school_network_delete, name='school_network_delete'),
+
+
+    # XLS
+    path('exportDoeComputer', views.exportDoeComputer, name='exportDoeComputer'),
+    path('eportSchoolInfo',views.exportSchoolInfo,name='exportSchoolInfo'),
+    path('exportSchoolLab',views.exportSchoolLab,name='exportSchoolLab'),
+    path('<int:id>/exportSchoolComputer',views.exportSchoolComputer,name='exportSchoolComputer'),
+    path('exportDoeCopier',views.exportDoeCopier,name='exportDoeCopier'),
+    path('exportDoePrinter',views.exportDoePrinter,name='exportDoePrinter'),
+    path('exportSchoolNetwork',views.exportSchoolNetwork,name='exportSchoolNetwork'),
 
 ]
 

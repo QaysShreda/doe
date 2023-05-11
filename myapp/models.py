@@ -2,6 +2,30 @@ from django.db import models
 
 # Create your models here.
 class Doe_computer(models.Model):
+
+    department_list =[
+        ('الادارة','الادارة'),
+        ('التخطيط','التخطيط'),
+        ('الشؤون الادارية','الشؤون الادارية'),
+        ('الرقابة','الرقابة'),
+        ('العلاقات العامة','العلاقات العامة'),
+        ('الاشراف','الاشراف'),
+        ('النواب','النواب'),
+        ('الارشاد','الارشاد'),
+        ('التعليم المهني','التعليم المهني'),
+        ('الابنية','الابنية'),
+        ('الامتحانات','الامتحانات'),
+        ('المالية','المالية'),
+        ('التعليم العام','التعليم العام'),
+        ('الانشطة الطلابية','الانشطة الطلابية'),
+        ('التقنيات التربوية','التقنيات التربوية'),
+        ('اللوازم','اللوازم'),
+        ('الديوان','الديوان'),
+        ('الديوان','الديوان'),
+        ('الصحة المدرسية','الصحة المدرسية'),
+        ('الكتب','الكتب'),
+        ('أخرى','أخرى'),
+    ]
     ram_type_list = [
         ('DDR2','DDR2'),
         ('DDR3','DDR3'),
@@ -13,7 +37,7 @@ class Doe_computer(models.Model):
         ('SSD','SSD'),
         ('Other','Other')
     ]
-    employee_name = models.CharField(max_length=50)
+    employee_name = models.CharField(choices=department_list,max_length=50)
     department = models.CharField(max_length=50)
     brand_name = models.CharField(max_length=50)
     cpu = models.CharField(max_length=50)
@@ -25,7 +49,13 @@ class Doe_computer(models.Model):
     monitor = models.CharField(max_length=50)
     serial = models.CharField(max_length=50,blank=True)
     anti_viruse = models.CharField(max_length=50)
-    expiry_date = models.DateField()
+    expiry_date = models.DateField(blank=True)
+    feilds = ['employee_name', 'department', 'brand_name', 'cpu', 'ram', 'ram_type', 'hdd', 'hdd_type', 'ip', 'monitor', 'serial','anti_viruse', 'expiry_date']
+
+    def  feild(self):
+        return self.feilds
+
+
 
 class Doe_copier(models.Model):
     brand_name = models.CharField(max_length=50)
@@ -105,6 +135,10 @@ class School(models.Model):
     principal = models.CharField(max_length=50)
     region= models.CharField(choices=area_type,max_length=50,default='منطقة أ')
     mobile = models.CharField(max_length=50)
+    science = models.BooleanField(default=False)
+    literary = models.BooleanField(default=False)
+    commercial = models.BooleanField(default=False)
+    industrial = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -131,6 +165,24 @@ class School_computer(models.Model):
     serial = models.CharField(max_length=50,blank=True)
     lab = models.ForeignKey(School_lab,on_delete=models.CASCADE)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
+
+class School_Network(models.Model):
+    internet = models.BooleanField(default=False)
+    speed_upload = models.IntegerField(max_length=50,blank=True,default=0)
+    speed_download = models.IntegerField(max_length=50,blank=True,default=0)
+    source = models.CharField(max_length=50,blank=True)
+    router = models.CharField(max_length=50, blank=True)
+    wifi = models.BooleanField(default=False)
+    ap_number = models.IntegerField(default=0,blank=True)
+    brand = models.CharField(max_length=50,blank=True)
+    coverage = models.FloatField(blank=True,default=0)
+    lan = models.BooleanField(default=False)
+    switch = models.CharField(max_length=50,blank=True)
+    port = models.IntegerField(default=0,blank=True)
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.id)
 
 
 

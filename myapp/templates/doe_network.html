@@ -2,14 +2,24 @@
 {% load static%}
 
 {% block content%}
-<div class="container justify-content-center">
+<div class="container justify-content-center ">
     <div class="row justify-content-center my_panel ">
-        <div class="col-md-10 border border-primary ">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <a href="{% url 'doe'%}">
+                    <h4 style="color:blue;font-size:16px;"><i class="fa fa-arrow-left fa-md" aria-hidden="true"></i>
+                        &nbsp Back</h4>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-10 border border-primary  bg-light">
+
             <div class="row justify-content-center my_table_title text-center">
                 <h3> Fiber Optics Line</h3>
             </div>
 
             <div class="row my_table">
+
                 <table class="table table-striped">
                     <thead class="border-bottom  font-weight-bold">
                     <tr>
@@ -55,8 +65,8 @@
     </div>
 
 
-    <div class="row justify-content-center my_panel">
-        <div class="col-md-10 border border-primary">
+    <div class="row justify-content-center my_panel ">
+        <div class="col-md-10 border border-primary  bg-light">
             <div class="row justify-content-center   text-center my_table_title">
                 <h3> Systems ( Common IP )</h3>
             </div>
@@ -104,7 +114,7 @@
     </div>
 
     <div class="row justify-content-center my_panel ">
-        <div class="col-md-10 border border-primary ">
+        <div class="col-md-10 border border-primary  bg-light ">
             <div class="row justify-content-center my_table_title text-center">
                 <h3> Wifi Router</h3>
             </div>
@@ -154,8 +164,21 @@
 
                     </tbody>
                 </table>
+
+
             </div>
         </div>
+
     </div>
-</div>
-{%endblock content%}
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    <a href="{% url 'doe'%}" class="btn btn-secondary btn-lg btn-block">
+                        <i class="fas fa-stream"></i> Back
+                    </a>
+                </div>
+            </div>
+        </div>
+        {%endblock content%}

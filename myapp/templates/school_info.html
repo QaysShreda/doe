@@ -6,9 +6,16 @@
     <div class="row justify-content-center mt-3">
         <h3>  مدارس مديرية التربية والتعليم</h3>
     </div>
-    <br>
+
     <div class="row justify-content-center">
             <div class="col-md-10">
+
+                        <div class="col-md-12 ">
+                <a href="{% url 'school'%}">
+                  <h4 style="color:blue;font-size:16px;text-align:left;">  <i class="fa fa-arrow-left fa-md" aria-hidden="true"></i> &nbsp Back</h4>
+                </a>
+        </div>
+
         <table class="table table-striped">
           <thead class="border-bottom font-weight-bold">
           <tr>
@@ -66,6 +73,16 @@
          </tbody>
 
      </table>
+
+                            <div class="text-center">
+
+                <div class="col-md-12">
+                    <a href="{% url 'exportSchoolInfo'%}" class="btn btn-success btn-lg ">
+                        <i class="fas fa-file-excel"></i> Export xls
+                    </a>
+                </div>
+
+            </div>
     </div>
     </div>
 

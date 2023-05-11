@@ -4,9 +4,9 @@
 
 {% block content%}
 <div class="container text-center justify-content-center ">
-            <div class="col-md-12 border mt-2 mb-2">
-            <h3 class="text-right">المدرسة </h3>
-        </div>
+    <div class="col-md-12 border mt-2 mb-2">
+        <h3 class="text-right">المدرسة </h3>
+    </div>
     <div class="section border">
         <div class="row cont-row justify-content-center ">
             <div class="col-md-3">
@@ -31,13 +31,14 @@
             </div>
 
             <div class="col-md-3">
-                <div>
-                    <img class="my-card img-fluid  mx-auto" src="{% static 'images/wifi.png'%}" alt="">
-                </div>
-                <br>
-                <h5> الانترنت والشبكات </h5>
+                <a href="{% url 'school_network'%}">
+                    <div>
+                        <img class="my-card img-fluid  mx-auto" src="{% static 'images/wifi.png'%}" alt="">
+                    </div>
+                    <br>
+                    <h5> الانترنت والشبكات </h5>
 
-
+                </a>
             </div>
 
             <div class="col-md-3">

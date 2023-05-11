@@ -8,44 +8,67 @@
             <h4> الطابعات والفاكسات </h4>
         </div>
     </div>
-    <br>
-   <table class="table  table-striped">
-    <thead class="border-bottom  font-weight-bold text-center">
-            <tr>
-                <td> Model Name</td>
-                <td> Employee Name</td>
-                <td> Cartridge</td>
-                <td> Driver</td>
-                <td>
-                    <a href="{% url 'doe_printer_form'%}" class="btn btn-outline-success">
+    <div class="col-md-12 ">
+                <a href="{% url 'doe'%}">
+                  <h4 style="color:blue;font-size:16px;">  <i class="fa fa-arrow-left fa-md" aria-hidden="true"></i> &nbsp Back</h4>
+                </a>
+        </div>
+    <table class="table  table-striped">
+        <thead class="border-bottom  font-weight-bold text-center">
+        <tr>
+            <td> Model Name</td>
+            <td> Employee Name</td>
+            <td> Cartridge</td>
+            <td> Driver</td>
+            <td>
+                <a href="{% url 'doe_printer_form'%}" class="btn btn-outline-success">
                     <i class="fas fa-plus">Add New Printer</i>
-                        </a>
-                </td>
-            </tr>
+                </a>
+            </td>
+        </tr>
         </thead>
         <tbody class="text-center">
         {% for printer in doe_printer%}
-            <tr>
-                <td> {{ printer.model_name}}</td>
-                <td> {{ printer.employee_name}}</td>
-                <td> {{ printer.Cartridge_number}}</td>
-                <td> {{ printer.driver}}</td>
+        <tr>
+            <td> {{ printer.model_name}}</td>
+            <td> {{ printer.employee_name}}</td>
+            <td> {{ printer.Cartridge_number}}</td>
+            <td> {{ printer.driver}}</td>
 
-                <td>
-                    <a href="{% url 'doe_printer_update' printer.id%}" class="btn text-secondary d-inline">
-                    <i class="far fa-edit fa-larg"></i>   </a>
+            <td>
+                <a href="{% url 'doe_printer_update' printer.id%}" class="btn text-secondary d-inline">
+                    <i class="far fa-edit fa-larg"></i> </a>
 
-                    <form action="{% url 'doe_printer_delete' printer.id%}" class="d-inline">
-                        <button type="submit" class="btn d-inline">
+                <form action="{% url 'doe_printer_delete' printer.id%}" class="d-inline">
+                    <button type="submit" class="btn d-inline">
                         <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
-                            </button>
-                    </form>
+                    </button>
+                </form>
 
-                </td>
-            </tr>
+            </td>
+        </tr>
         {% endfor%}
         </tbody>
     </table>
-</div>
 
-{% endblock content%}
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="row justify-content-center">
+                             <div class="col-md-2">
+                        <a href="{% url 'doe'%}" class="btn btn-secondary btn-lg btn-block">
+                            <i class="fas fa-stream"></i> Back
+                        </a>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a href="{% url 'exportDoePrinter'%}" class="btn btn-success btn-lg btn-block ">
+                            <i class="fas fa-file-excel"></i> Export xls
+                        </a>
+                    </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+    {% endblock content%}

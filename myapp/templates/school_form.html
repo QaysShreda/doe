@@ -7,9 +7,106 @@
         {% csrf_token%}
         <div class="row justify-content-center">
             <div class="col-md-6">
-                {{form | crispy}}
+                {{form.school_id | as_crispy_field}}
             </div>
         </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.name | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.name_en | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                {{form.l_level | as_crispy_field}}
+            </div>
+
+            <div class="col-md-3">
+                {{form.u_level | as_crispy_field}}
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.type | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.st_number | as_crispy_field}}
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.location | as_crispy_field}}
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.phone_number | as_crispy_field}}
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.principal | as_crispy_field}}
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.mobile | as_crispy_field}}
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{form.region | as_crispy_field}}
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-2">
+                <h5>: المجال إن وجد </h5>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                {{form.science| as_crispy_field}}
+            </div>
+
+            <div class="col-md-3">
+                {{form.literary | as_crispy_field}}
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                {{form.commercial | as_crispy_field}}
+            </div>
+            <div class="col-md-3">
+                {{form.industrial | as_crispy_field}}
+            </div>
+        </div>
+
+
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <button type="submit" class="btn btn-success btn-lg btn-block">
@@ -18,7 +115,7 @@
             </div>
             <div class="col-md-2">
                 <a href="{% url 'school_info'%}" class="btn btn-secondary btn-lg btn-block">
-                   <i class="fas fa-stream"></i> Back
+                    <i class="fas fa-stream"></i> Back
                 </a>
             </div>
         </div>
