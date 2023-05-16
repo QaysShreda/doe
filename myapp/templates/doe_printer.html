@@ -8,6 +8,7 @@
             <h4> الطابعات والفاكسات </h4>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="col-md-12 ">
                 <a href="{% url 'doe'%}">
                   <h4 style="color:blue;font-size:16px;">  <i class="fa fa-arrow-left fa-md" aria-hidden="true"></i> &nbsp Back</h4>
@@ -26,6 +27,22 @@
                 </a>
             </td>
         </tr>
+=======
+    <br>
+   <table class="table  table-striped">
+    <thead class="border-bottom  font-weight-bold text-center">
+            <tr>
+                <td> Model Name</td>
+                <td> Employee Name</td>
+                <td> Cartridge</td>
+                <td> Driver</td>
+                <td>
+                    <a href="{% url 'doe_printer_form'%}" class="btn btn-outline-success">
+                    <i class="fas fa-plus">Add New Printer</i>
+                        </a>
+                </td>
+            </tr>
+>>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
         </thead>
         <tbody class="text-center">
         {% for printer in doe_printer%}

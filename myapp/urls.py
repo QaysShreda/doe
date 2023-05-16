@@ -50,6 +50,25 @@ urlpatterns =[
     path('<int:id>/doe_wifi_delete/', views.doe_wifi_delete, name="doe_wifi_delete"),
 
 
+# School
+
+    path('school_info', views.school_info, name="school_info"),
+    path('school_form', views.school_form, name='school_form'),
+    path('<int:id>/school_form', views.school_form, name='school_update'),
+    path('<int:id>/school_delete/', views.school_delete, name="school_delete"),
+
+     # Lab
+    path('school_lab',views.school_lab,name='school_lab'),
+    path('school_lab_form',views.school_lab_form,name='school_lab_form'),
+    path('<int:id>/school_lab_form',views.school_lab_form,name='school_lab_update'),
+    path('<int:id>/school_lab_delete',views.school_lab_delete,name='school_lab_delete'),
+
+
+
+    path('<int:lab>/school_computer_form',views.school_computer_form,name='school_computer_form'),
+    path('<int:lab>/<int:id>/school_computer_form', views.school_computer_form, name='school_computer_update'),
+    path('<int:id>/school_computer_delete', views.school_computer_delete, name='school_computer_delete'),
+    path('<int:id>/school_lab_computers',views.school_lab_computers,name='school_lab_computers'),
 
 
 # School

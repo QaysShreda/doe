@@ -7,6 +7,7 @@
         {% csrf_token%}
         <div class="row justify-content-center">
             <div class="col-md-6">
+<<<<<<< HEAD
                 {{form.school_id | as_crispy_field}}
             </div>
         </div>
@@ -107,6 +108,11 @@
         </div>
 
 
+=======
+                {{form | crispy}}
+            </div>
+        </div>
+>>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <button type="submit" class="btn btn-success btn-lg btn-block">
@@ -115,7 +121,11 @@
             </div>
             <div class="col-md-2">
                 <a href="{% url 'school_info'%}" class="btn btn-secondary btn-lg btn-block">
+<<<<<<< HEAD
                     <i class="fas fa-stream"></i> Back
+=======
+                   <i class="fas fa-stream"></i> Back
+>>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
                 </a>
             </div>
         </div>
