@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Doe_computer(models.Model):
-<<<<<<< HEAD
+
 
     department_list =[
         ('الادارة','الادارة'),
@@ -21,14 +21,16 @@ class Doe_computer(models.Model):
         ('الانشطة الطلابية','الانشطة الطلابية'),
         ('التقنيات التربوية','التقنيات التربوية'),
         ('اللوازم','اللوازم'),
+        
         ('الديوان','الديوان'),
         ('الديوان','الديوان'),
         ('الصحة المدرسية','الصحة المدرسية'),
         ('الكتب','الكتب'),
         ('أخرى','أخرى'),
+    
     ]
-=======
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
+
     ram_type_list = [
         ('DDR2','DDR2'),
         ('DDR3','DDR3'),
@@ -40,11 +42,12 @@ class Doe_computer(models.Model):
         ('SSD','SSD'),
         ('Other','Other')
     ]
-<<<<<<< HEAD
+
     employee_name = models.CharField(choices=department_list,max_length=50)
-=======
+
     employee_name = models.CharField(max_length=50)
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
+
     department = models.CharField(max_length=50)
     brand_name = models.CharField(max_length=50)
     cpu = models.CharField(max_length=50)
@@ -56,7 +59,8 @@ class Doe_computer(models.Model):
     monitor = models.CharField(max_length=50)
     serial = models.CharField(max_length=50,blank=True)
     anti_viruse = models.CharField(max_length=50)
-<<<<<<< HEAD
+
+
     expiry_date = models.DateField(blank=True)
     feilds = ['employee_name', 'department', 'brand_name', 'cpu', 'ram', 'ram_type', 'hdd', 'hdd_type', 'ip', 'monitor', 'serial','anti_viruse', 'expiry_date']
 
@@ -64,9 +68,9 @@ class Doe_computer(models.Model):
         return self.feilds
 
 
-=======
+
     expiry_date = models.DateField()
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
 
 class Doe_copier(models.Model):
     brand_name = models.CharField(max_length=50)
@@ -146,13 +150,12 @@ class School(models.Model):
     principal = models.CharField(max_length=50)
     region= models.CharField(choices=area_type,max_length=50,default='منطقة أ')
     mobile = models.CharField(max_length=50)
-<<<<<<< HEAD
+
     science = models.BooleanField(default=False)
     literary = models.BooleanField(default=False)
     commercial = models.BooleanField(default=False)
     industrial = models.BooleanField(default=False)
-=======
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
 
     def __str__(self):
         return self.name
@@ -180,7 +183,7 @@ class School_computer(models.Model):
     lab = models.ForeignKey(School_lab,on_delete=models.CASCADE)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
 
-<<<<<<< HEAD
+
 class School_Network(models.Model):
     internet = models.BooleanField(default=False)
     speed_upload = models.IntegerField(max_length=50,blank=True,default=0)
@@ -199,8 +202,7 @@ class School_Network(models.Model):
     def __str__(self):
         return str(self.id)
 
-=======
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
 
 
 

@@ -1,10 +1,10 @@
 from django import forms
-<<<<<<< HEAD
+
 from .models import *
 
-=======
+
 from .models import Doe_computer,Doe_copier,Doe_printer,Doe_projector,Doe_Fiber,Common_Ip,Doe_Wifi,School_lab,School,School_computer
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
 
 
 
@@ -57,11 +57,11 @@ class School_form(forms.ModelForm):
     class Meta:
         model = School
         fields = '__all__'
-<<<<<<< HEAD
+
         labels={ 'school_id':'National number','name':'School Name ar','name_en':'School Name en','l_level':'Lower Level','u_level':'Upper Level','st_number':'Student number','phone_number':'Phone','mobile':'Principal mobile','science':'علمي' ,'literary':'أدبي','commercial':'تجاري' ,'industrial':'صناعي'}
-=======
+
         labels={ 'school_id':'National number','name':'Name ar','name_en':'Name en','l_level':'Lower Level','u_level':'Upper Level','st_number':'Student number','phone_number':'Phone','mobile':'Principal mobile'}
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
 
 class School_lab_form(forms.ModelForm):
     class Meta:
@@ -72,7 +72,7 @@ class School_lab_form(forms.ModelForm):
 class School_Computer_Form(forms.ModelForm):
     class Meta:
         model = School_computer
-<<<<<<< HEAD
+
         fields = '__all__'
 
 class School_Network_Form(forms.ModelForm):
@@ -80,6 +80,6 @@ class School_Network_Form(forms.ModelForm):
         model = School_Network
         fields = '__all__'
         labels={'internet':'Yes','wifi':'Yes','speed_download':'Download Speed','speed_upload':'Upload Speed','router':'Router Brand','lan':'Yes','port':'Number of Ports','ap_number':'AP Number'}
-=======
+
         fields = '__all__'
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
