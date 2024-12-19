@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpRequest
-<<<<<<< HEAD
 from .forms import *
 from .models import *
 from django.contrib.auth.models import User,auth
@@ -9,15 +8,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
-
-
-=======
 from .forms import ComputerForm,CopierForm,PrinterForm,ProjectorForm,FiberForm,IPForm,WifiForm,School_lab_form,School_form,School_Computer_Form
 from .models import Doe_computer,Doe_copier,Doe_printer,Doe_projector,Doe_Fiber,Doe_Wifi,Common_Ip,School_lab,School,School_computer
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
+
 # Create your views here.
 
 
@@ -193,7 +189,7 @@ def doe_projector_delete(request,id):
     projector = Doe_projector.objects.get(pk=id)
     projector.delete()
     return redirect('/doe_projector')
-<<<<<<< HEAD
+
 
 
 #NETWORK
@@ -634,9 +630,6 @@ def exportSchoolNetwork(self):
 
     wb.save(response)
     return response
-
-=======
->>>>>>> ead5f86ecc5368730894716184880ac4d5d84c5c
 
 
 #NETWORK
